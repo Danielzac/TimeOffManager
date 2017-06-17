@@ -1,0 +1,18 @@
+extends layout
+
+block content
+    .col-xs-6.col-md-4
+      h3 Name
+    .col-xs-6.col-md-4
+      h3 E-Mail
+    .col-xs-12.col-md-4
+      h3 Is Admin?
+    each user in users
+      .col-xs-6.col-md-4
+        h5 #{user.name}
+      .col-xs-6.col-md-4
+        h5 #{user.email}
+      .col-xs-12.col-md-4
+        h5 #{user.isAdmin} 
+
+

@@ -1,0 +1,51 @@
+doctype html
+html
+  head
+    title= title
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/moment.min.js')
+    script(src='/javascripts/js.cookie.js')
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css", rel="stylesheet")
+    script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js")
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/fullcalendar/fullcalendar.css')
+    script(src='/fullcalendar/fullcalendar.min.js')
+    script(src='/fullcalendar/gcal.js')
+    script(src="http://cdn.jsdelivr.net/webshim/1.12.4/extras/modernizr-custom.js")
+    script(src="http://cdn.jsdelivr.net/webshim/1.12.4/polyfiller.js")
+    script(src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js")
+    script.
+      webshims.setOptions('waitReady', false);
+      webshims.setOptions('forms-ext', {types: 'date'});
+      webshims.polyfill('forms forms-ext');
+  body
+    .navbar.navbar-default.navbar-fixed-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a(href="/")
+              img(class="navbar-brand" src='/images/calendar.png' style="max-height: 50px; overflow: visible; padding-top: 0; padding-bottom: 0;") 
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/calendar') Calendar
+            li
+              a(href='/adminDays') Admin Page
+            if (fullAdmin)
+              li
+                a(href='/register') Register New User
+          ul.nav.navbar-nav.navbar-right
+            if (cookies)
+              if (cookies.userid)
+                li: a(href="/userprofile") #{cookies.name}
+                li: a(href="/logout") Logout 
+              else
+                li: a(href='/login') Login
+            else
+              li: a(href='/login') Login
+        // /.nav-collapse
+    block content

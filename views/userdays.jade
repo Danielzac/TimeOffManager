@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h3 Edit any user's allowed days
+    each user in users
+        if (user.User)
+          div.row
+            .col-xs-6
+              h3 #{user.User.name}
+            .col-xs-6
+              a(href= '/userdays/#{user.UserUserid}'): button(type="button" class='btn btn-primary') Edit Allowed Days
+
+

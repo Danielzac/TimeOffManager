@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  if (fullAdmin)
+    div.row
+      .col-xs-6
+        h3 Edit allowed days
+      .col-xs-6
+        a(href="/userdays"): button(type="button" class="btn btn-primary") Edit Days
+    div.row
+      .col-xs-6
+        h3 Edit Passwords
+      .col-xs-6
+        a(href="/userpasswords"): button(type="button" class="btn btn-primary") Edit Passwords
+  div.row
+    .col-xs-3
+      h3 Type
+    .col-xs-3
+      h3 Days used
+    .col-xs-3
+      h3 Days allowed
+    .col-xs-3
+      h3 Days left
+  each user in users
+    div.row
+      .col-xs-12
+        h3 #{user.name} days used this year:
+      .col-xs-3
+        p Vacation days: 
+      .col-xs-3
+        p #{user.dataValues.vacationdays}
+      .col-xs-3
+        p #{user.UserDay.vacationdaysallowed}
+      .col-xs-3
+        - var vdaysleft = parseFloat(user.UserDay.vacationdaysallowed) - parseFloat(user.dataValues.vacationdays)
+        p #{vdaysleft}
+      .col-xs-3
+        p Sick days: 
+      .col-xs-3
+        p #{user.dataValues.sickdays}
+      .col-xs-3
+        p #{user.UserDay.sickdaysallowed}
+      .col-xs-3
+        - var sdaysleft = parseFloat(user.UserDay.sickdaysallowed) - parseFloat(user.dataValues.sickdays)
+        p #{sdaysleft}
+      .col-xs-3
+        p Traning days: 
+      .col-xs-3
+        p #{user.dataValues.trainingdays}
+      .col-xs-3
+        p #{user.UserDay.trainingdaysallowed}
+      .col-xs-3
+        - var tdaysleft = parseFloat(user.UserDay.trainingdaysallowed) - parseFloat(user.dataValues.trainingdays)
+        p #{tdaysleft}
+      .col-xs-3
+        p  Statutory days: 
+      .col-xs-3
+        p #{user.dataValues.statdays}
+      .col-xs-3
+        p #{user.UserDay.statutorydaysallowed}
+      .col-xs-3
+        - var statdaysleft = parseFloat(user.UserDay.statutorydaysallowed) - parseFloat(user.dataValues.statdays)
+        p #{statdaysleft}
+      .col-xs-3
+        p  Bereavement days: 
+      .col-xs-3
+        p #{user.dataValues.bereavementdays}
+      .col-xs-3
+        p #{user.UserDay.bereavementdaysallowed}
+      .col-xs-3
+        - var bereavementdaysleft = parseFloat(user.UserDay.bereavementdaysallowed) - parseFloat(user.dataValues.bereavementdays)
+        p #{bereavementdaysleft}
+      .col-xs-3
+        p  Other days: 
+      .col-xs-3
+        p #{user.dataValues.otherdays}
+      .col-xs-3
+        p #{user.UserDay.otherdaysallowed}
+      .col-xs-3
+        - var otherdaysleft = parseFloat(user.UserDay.otherdaysallowed) - parseFloat(user.dataValues.otherdays)
+        p #{otherdaysleft}

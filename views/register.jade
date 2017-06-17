@@ -1,0 +1,28 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function() {
+      $("#register").validate();
+      });
+  body
+      div(class='col-xs-offset-4')
+        h1 Register
+        if(errors)
+          p The following errors have occurred:
+            ul
+              each error in errors
+                li #{error.msg}
+        form(id='register', action='/register', method='post')
+            div(class='center-block' data-role='ui-field-contain' id='regForm')
+                fieldset
+                  h6(for='name') Name: 
+                    input(id='name', name='name' minlength="5" required)
+                    div(id="icname")
+                  h6(for='email') E-mail: 
+                    input(id='email', name='email' type="email" required)
+                    div(id="icemail")
+                  h6(for='password') Password: 
+                    input(type='password', id='password' minlength= "8" name='password' required)
+                    div(id="icpass")
+                  button(type='submit', id="submitbutton" class='btn btn-default', value='register') Register

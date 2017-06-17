@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  script.
+    $(document).ready(function() {
+      $("#updatebutton").fadeTo("fast", 0.5);
+        $("#checkpassword").change(function() {
+            if($("#checkpassword").val().length > 7 && $("#checkpassword").val() == $("#newpassword").val()){
+              $("#updatebutton").prop("disabled", false).fadeTo("fast", 1);
+              $("#notcorrect").html("");
+            } else {
+              $("#updatebutton").prop("disabled", true).fadeTo("fast", 0.5);
+              $("#notcorrect").html("Passwords do not match or are not at least 8 characters long").css("color", "red");
+            }
+          });
+        $("#newpassword").change(function() {
+            if($("#checkpassword").val().length > 7 && $("#checkpassword").val() == $("#newpassword").val()){
+              $("#updatebutton").prop("disabled", false).fadeTo("fast", 1);
+              $("#notcorrect").html("");
+            } else {
+              $("#updatebutton").prop("disabled", true).fadeTo("fast", 0.5);
+              if($("#checkpassword").val().length > 0) {
+                $("#notcorrect").html("Passwords do not match or are not at least 8 characters long").css("color", "red");
+              }
+            }
+          });
+      });
+  h3 Edit User Profile
+    form(id='updateUserProfile' action='/userprofile' method='POST')
+      div.row
+        .col-xs-6
+          h4 New Password:
+        .col-xs-6
+          input(type="password" name="newpassword" id='newpassword')
+      div.row
+        .col-xs-6
+          h4 Confirm New Password:
+        .col-xs-6
+          input(type="password" name="checkpassword" id='checkpassword')
+      div.row
+        div(id="notcorrect")
+      div.row
+        button(type='submit' id="updatebutton" disabled) Update Profile

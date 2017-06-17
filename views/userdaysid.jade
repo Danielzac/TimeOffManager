@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  h3 Edit #{users.User.name}'s allowed days
+  div.row
+    form(id='updateUserDays' action='/userdays/#{users.UserUserid}' method='POST')
+      div.row
+        .col-xs-6
+          h3 Vacation days:
+        .col-xs-6
+          input(type="number" name="vacationdaysallowed" value="#{users.vacationdaysallowed}")
+      div.row
+        .col-xs-6
+          h3 Sick days:
+        .col-xs-6
+          input(type="number" name="sickdaysallowed" value="#{users.sickdaysallowed}")
+      div.row
+        .col-xs-6
+          h3 Training days:
+        .col-xs-6
+          input(type="number" name="trainingdaysallowed" value="#{users.trainingdaysallowed}")
+      div.row
+        .col-xs-6
+          h3 Statutory days:
+        .col-xs-6
+          input(type="number" name="statutorydaysallowed" value="#{users.statutorydaysallowed}")
+      div.row
+        .col-xs-6
+          h3 Bereavement days:
+        .col-xs-6
+          input(type="number" name="bereavementdaysallowed" value="#{users.bereavementdaysallowed}")
+      div.row
+        .col-xs-6
+          h3 Other days:
+        .col-xs-6
+          input(type="number" name="otherdaysallowed" value="#{users.otherdaysallowed}")
+      div.row
+        button(type="submit" class="btn btn-primary") Update Days

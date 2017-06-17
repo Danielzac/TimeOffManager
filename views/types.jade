@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  body
+      form(id='addTypes', action='/types', method='post')
+        div(class='center-block' data-role='ui-field-contain' id='regForm')
+            fieldset
+              h6(for='type') Type: 
+                input(id='type', name='type')
+              button(type='submit', onclick="", class='btn btn-default', value='Submit') Register

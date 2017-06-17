@@ -1,0 +1,16 @@
+extends layout
+
+block content
+    body
+        div
+            h1 Log-in
+            if(error)
+                h5(style="color: red;") #{error} 
+            form(id='login', action='/login', method='post')
+                div(data-role='ui-field-contain' id='loginForm')
+                    fieldset
+                        h6(for='email') E-mail: 
+                            input(id='email', name='email')
+                        h6(for='password') Password: 
+                            input(type='password', id='password', value='', name='password')
+                        button(type='submit', onclick="", class='btn btn-default', value='login') Log-In
